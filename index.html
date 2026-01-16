@@ -1,96 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anna Yesypenko</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f9f9f9;
-            line-height: 1.6;
-        }
-        header {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-        header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-        }
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1rem;
-            color: #555;
-        }
-        .container {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        section {
-            margin-bottom: 1.5rem;
-        }
-        h2 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #007acc;
-        }
-        p {
-            margin: 0.5rem 0;
-        }
-        a {
-            color: #007acc;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.9rem;
-            color: #777;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anna Yesypenko</title>
+  <meta name="description" content="Anna Yesypenko — Assistant Professor at The Ohio State University. Research in scientific computing and numerical linear algebra." />
+
+  <style>
+    :root{
+      --text:#1f2937;      /* slate-800 */
+      --muted:#4b5563;     /* slate-600 */
+      --subtle:#6b7280;    /* slate-500 */
+      --border:#e5e7eb;    /* gray-200 */
+      --bg:#ffffff;
+      --panel:#fafafa;     /* calm off-white */
+      --accent:#0b66c3;    /* restrained blue */
+      --max: 860px;
+      --radius: 12px;
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* Top bar */
+    .topbar{
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.92);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(6px);
+      z-index: 20;
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0;
+      flex-wrap: wrap;
+    }
+    .nav{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .nav a{ color: var(--muted); }
+    .nav a:hover{ color: var(--text); text-decoration: none; }
+
+    /* Header */
+    header{
+      padding: 34px 0 18px;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+    .photo{
+      width: 140px;
+      height: 140px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      border: 1px solid var(--border);
+      background: var(--panel);
+    }
+    h1{
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: -0.2px;
+    }
+    .titleline{
+      margin: 6px 0 10px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .quicklinks{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+      font-size: 0.96rem;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 999px;
+      color: var(--text);
+    }
+    .pill:hover{ text-decoration:none; border-color:#d1d5db; }
+
+    /* Main sections */
+    main{ padding: 10px 0 46px; }
+    section{ margin-top: 22px; }
+    h2{
+      font-size: 1.1rem;
+      margin: 0 0 10px;
+      color: var(--text);
+      letter-spacing: 0.2px;
+    }
+    .panel{
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 14px 14px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    p{ margin: 0.6rem 0; color: var(--text); }
+    .muted{ color: var(--muted); }
+
+    ul{ margin: 8px 0 0; padding-left: 18px; }
+    li{ margin: 6px 0; color: var(--muted); }
+
+    /* Calm “callout” */
+    .callout{
+      background: #ffffff;
+      border: 1px solid rgba(11,102,195,0.18);
+    }
+
+    /* Collapsible News */
+    details.news{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+      padding: 4px 12px;
+    }
+    details.news summary{
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--accent);
+      padding: 10px 0;
+      list-style: none;
+    }
+    details.news summary::-webkit-details-marker{ display:none; }
+    details.news summary::after{
+      content:"▾";
+      float:right;
+      color: var(--accent);
+    }
+    details.news[open] summary::after{ content:"▴"; }
+
+    .news-list{
+      margin: 0 0 10px;
+      padding-left: 18px;
+    }
+    .news-list li{
+      margin: 8px 0;
+      color: var(--text);
+    }
+    .news-date{
+      color: var(--subtle);
+      font-size: 0.92rem;
+      margin-right: 0.4rem;
+      white-space: nowrap;
+    }
+
+    /* Publications */
+    .pub{
+      padding: 10px 0;
+      border-top: 1px solid #eaeaea;
+    }
+    .pub:first-child{ border-top:none; padding-top:0; }
+    .pub .ptitle{ font-weight: 650; color: var(--text); }
+    .pub .pmeta{ color: var(--muted); font-size: 0.95rem; margin-top: 2px; }
+    .pub .plinks{ color: var(--subtle); font-size: 0.93rem; margin-top: 4px; }
+    .pub .plinks a{ color: var(--accent); }
+
+    footer{
+      border-top: 1px solid var(--border);
+      padding: 18px 0;
+      color: var(--subtle);
+      font-size: 0.93rem;
+    }
+
+    @media (max-width: 720px){
+      .hero{ grid-template-columns: 1fr; }
+      .photo{ width: 120px; height: 120px; }
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <img src="profile.jpg" alt="Anna Yesypenko">
-        <h1>Anna Yesypenko</h1>
-        <p>Assistant Professor at The Ohio State University,<br>bridging computational mathematics and engineering to solve real-world challenges.</p>
-    </header>
-
-    <div class="container">
-        <section id="research">
-            <h2>Research</h2>
-            <p>I develop efficient solvers for elliptic partial differential equations (PDEs) using randomized numerical linear algebra, focusing on performance and scalability for modern heterogeneous architectures. My work bridges theoretical insights and practical implementation, leveraging cutting-edge computational techniques to address complex scientific problems.</p>
-        </section>
-
-        
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:yesypenko.1@osu.edu">yesypenko.1@osu.edu</a></p>
-            <p>Google Scholar: <a href="https://scholar.google.com/citations?user=puKC7U4AAAAJ&hl=en&oi=ao" target="_blank">View My Profile</a></p>
-            <p>GitHub: <a href="https://github.com/annayesy" target="_blank">My GitHub</a></p>
-        </section>
+  <div class="topbar">
+    <div class="wrap">
+      <div class="topbar-inner">
+        <div style="font-weight:650;">Anna Yesypenko</div>
+        <nav class="nav">
+          <a href="#research">Research</a>
+          <a href="#students">Students</a>
+          <a href="#news">News</a>
+          <a href="#publications">Publications</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
     </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 Anna Yesypenko</p>
-    </footer>
+  <header>
+    <div class="wrap">
+      <div class="hero">
+        <img class="photo" src="profile.jpg" alt="Anna Yesypenko" />
+
+        <div>
+          <h1>Anna Yesypenko</h1>
+          <div class="titleline">
+            Assistant Professor, Department of Mathematics — The Ohio State University
+          </div>
+          <p class="muted" style="max-width: 70ch;">
+            I work on scientific computing and numerical linear algebra, with a focus on randomized and structure-exploiting methods for fast solvers for elliptic PDEs.
+          </p>
+
+          <div class="quicklinks">
+            <a class="pill" href="CV_annayesy.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+            <a class="pill" href="https://scholar.google.com/citations?user=puKC7U4AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="pill" href="https://github.com/annayesy" target="_blank" rel="noopener">GitHub</a>
+            <a class="pill" href="mailto:yesypenko.1@osu.edu">yesypenko.1@osu.edu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="research">
+      <h2>Research</h2>
+      <div class="panel">
+        <p>
+          My group develops scalable algorithms for PDE simulation by combining randomized numerical linear algebra with hierarchical structure and performance-aware implementation.
+          I’m especially interested in methods that are both theoretically grounded and practical on modern architectures.
+        </p>
+
+        <div class="grid-2" style="margin-top: 10px;">
+          <div class="panel" style="background:#fff;">
+            <strong>Topics</strong>
+            <ul>
+              <li>Randomized compression and sketching</li>
+              <li>Hierarchical matrix methods and fast solvers</li>
+              <li>Preconditioning and scalable implementations</li>
+            </ul>
+          </div>
+          <div class="panel" style="background:#fff;">
+            <strong>Current directions</strong>
+            <ul>
+              <li>Fast solvers for large-scale PDEs</li>
+              <li>Robust approximations with error control</li>
+              <li>GPU-friendly kernels and parallel scalability</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="students">
+      <h2>Prospective Students</h2>
+      <div class="panel callout">
+        <p>
+          I’m looking for PhD students (and strong MS/undergraduates) interested in scientific computing, numerical linear algebra, and high-performance computing.
+          If you’re interested, please email me with your CV and a short note about your background and what kinds of problems you’d like to work on.
+        </p>
+        <div class="grid-2" style="margin-top: 10px;">
+          <div class="panel" style="background:#fff;">
+            <strong>Good preparation</strong>
+            <ul>
+              <li>Linear algebra, numerical analysis, PDEs</li>
+              <li>Some programming experience (Python/C/C++)</li>
+              <li>Interest in computation and algorithms</li>
+            </ul>
+          </div>
+          <div class="panel" style="background:#fff;">
+            <strong>Getting started</strong>
+            <ul>
+              <li>Read one paper you’re excited about and tell me why</li>
+              <li>(Optional) share code, GitHub, or a writing sample</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="news">
+  <h2>News</h2>
+  <details class="news" open>
+    <summary>Recent updates</summary>
+    <ul class="news-list">
+
+      <li>
+        <span class="news-date">Mar 2026</span>
+        Serving on the program committee for 
+        <a href="https://isc-hpc.com/submissions/research-paper/" target="_blank" rel="noopener">
+        ISC 2026</a> in the Algorithms & Performance area/track.
+      </li>
+
+      <li>
+        <span class="news-date">Dec 2025</span>
+        New preprint:
+        <a href="https://arxiv.org/abs/2510.25991" target="_blank" rel="noopener">
+        “A fast spectral overlapping domain decomposition method”</a>.
+      </li>
+
+      <li>
+        <span class="news-date">Aug 2025</span>
+        Joined the faculty at
+        <a href="https://math.osu.edu/people/yesypenko.1" target="_blank" rel="noopener">
+        The Ohio State University</a>. Go Bucks!
+      </li>
+
+      <li>
+        <span class="news-date">Jun 2025</span>
+        Plenary talk at the
+        <a href="https://householder-symposium.github.io/abstracts/paper216.html" target="_blank" rel="noopener">
+        Householder Symposium XXII
+        </a>
+        on hierarchical and randomized solvers.
+      </li>
+
+    </ul>
+  </details>
+</section>
+
+    <section id="publications">
+      <h2>Selected Publications</h2>
+      <div class="panel">
+        <div class="pub">
+          <div class="ptitle">Randomized Strong Recursive Skeletonization</div>
+          <div class="pmeta">Anna Yesypenko, Per-Gunnar Martinsson</div>
+          <div class="plinks"><a href="https://arxiv.org/pdf/2311.01451">PDF</a>
+        </div>
+        <div class="pub">
+          <div class="ptitle">A Simplified Fast Multipole Method Based on Strong Recursive Skeletonization</div>
+          <div class="pmeta">Anna Yesypenko, Chao Chen, Per-Gunnar Martinsson • JCP 2025</div>
+          <div class="plinks"><a href="https://arxiv.org/pdf/2310.16668">PDF</a> · <a href="https://doi.org/10.1016/j.jcp.2024.113707">DOI</a> · <a href="https://github.com/annayesy/skelFMM">Code</a></div>
+        </div>
+        <div class="pub">
+          <div class="ptitle">SlabLU: A Two-Level Sparse Direct Solver for Elliptic PDEs</div>
+          <div class="pmeta">Anna Yesypenko, Per-Gunnar Martinsson • ACOM 2024</div>
+          <div class="plinks"><a href="https://arxiv.org/pdf/2211.07572">PDF</a> · <a href="https://doi.org/10.1007/s10444-024-10176-x">DOI</a> · <a href="https://github.com/annayesy/slabLU">Code</a></div>
+        </div>
+
+        <p class="muted" style="margin-top:10px;">
+          Full list: <a href="https://scholar.google.com/citations?user=puKC7U4AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="panel">
+        <p><strong>Email:</strong> <a href="mailto:yesypenko.1@osu.edu">yesypenko.1@osu.edu</a></p>
+        <p><strong>Office:</strong> MW 740</p>
+        <p class="muted">You can also find my CV and publication list via the links above.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © 2026 Anna Yesypenko • Last updated: January 2026
+    </div>
+  </footer>
 </body>
 </html>
