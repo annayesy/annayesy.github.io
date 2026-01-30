@@ -1,0 +1,243 @@
+
+\documentclass[10pt,margin]{res}
+
+\usepackage{amsmath}
+\topmargin=-0.5in
+\headheight=0pt
+\headsep=0pt
+
+\newenvironment{tightitemize}{
+  \begin{itemize}
+    \setlength{\itemsep}{0.3em}
+    \setlength{\parsep}{0pt}
+    \setlength{\parskip}{0pt}
+  }{\end{itemize}}
+
+\newcommand{\workshop}[3]{%
+  \textbf{#1}.\\%
+  #2. #3.\\[0.4em]%
+}
+
+\newcommand{\condensed}[2]{%
+  \textbf{#1}.{#2}\\[0.4em]%
+}
+
+\usepackage[
+    backend=biber,
+    style=numeric,
+    sorting=none,
+    maxnames=99
+]{biblatex}
+\addbibresource{references.bib}
+\nocite{*}
+
+% \DeclareBibliographyCategory{inprep}
+% \addtocategory{inprep}{yesypenko2025multifrontal, yesypenko2025hmat, dirckx2025slablu}
+
+\DeclareBibliographyCategory{preprint}
+\addtocategory{preprint}{dirckx2025fast, kump2025gpu, pearce2025tagging}
+
+\DeclareBibliographyCategory{published}
+\addtocategory{published}{yesypenko2026randomized,yesypenko2025fmm, yesypenko2024slablu, yesypenko2022gpu, revard2016grand}
+
+\DeclareBibliographyCategory{thesis}
+\addtocategory{thesis}{yesypenko2023thesis}
+
+\DeclareBibliographyCategory{software}
+\addtocategory{software}{python2025fmm,python2025simpletree,python2024slablu}
+
+% Default font is the helvetica postscript font
+\usepackage{helvet}
+\usepackage{hyperref}
+
+% Increase text height
+\textheight=820pt
+
+\begin{document}
+
+%-------------------------------------------------------------------------------
+%	NAME AND ADDRESS SECTION
+%-------------------------------------------------------------------------------
+\name{Anna Yesypenko}
+
+% Note that addresses can be used for other contact information:
+% -phone numbers
+% -email addresses
+% -linked-in profile
+
+\address{Email: yesypenko.1@osu.edu \quad Website:
+\url{annayesy.github.io}}
+
+% Uncomment to add a third address
+%\address{Address 3 line 1\\Address 3 line 2\\Address 3 line 3}
+%-------------------------------------------------------------------------------
+
+\begin{resume}
+
+%-------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%-------------------------------------------------------------------------------
+%\section{OBJECTIVE}
+%{\sl Pre-Final year B. Tech student at LNMIIT. Inquisitive, hard-working and consistent. Looking for internship opportunities at Microsoft where I can apply my skills and contribute to real-world projects }
+
+\section{Positions}
+
+\textbf{Assistant Professor of Mathematics} \hfill{\textbf{August 2025 - Current}}\\
+{\sl The Ohio State University}
+
+\textbf{Postdoctoral Fellow} \hfill{\textbf{Jan 2024 - August 2025}}\\
+{\sl Oden Institute, University of Texas at Austin}\\
+Supervised by George Biros
+
+
+\section{Education}
+\textbf{University of Texas at Austin} \hfill{\textbf{Sep 2017 - Dec 2023}}\\
+{\sl PhD in Computational Science, Engineering, and Mathematics}\\
+{\sl Msc in Computational Science, Engineering, and Mathematics}\\
+Advisor: Per-Gunnar Martinsson, Co-advisor: George Biros
+
+\textbf{Cornell University \hfill{Sep 2013 - May 2017}} \\
+{\sl Bachelor's of Science in Engineering}, magna cum laude\\
+Major: Computer Science
+
+%-------------------------------------------------------------------------------
+% Modify the format of each position
+\begin{format}
+\title{l}\\
+\dates{l}\location{r}\\
+\body\\
+\end{format}
+%-------------------------------------------------------------------------------
+
+\section{Teaching}
+
+\textbf{Math 7611: Computational PDEs I \hfill{Fall 2025}}
+
+% \textbf{`Discrete Mathematics' TA at University of Pennsylvania \hfill{July 2017}}
+% % \normalfont{Delivered a short series of lectures on graph theory and developed a corresponding set of notes and homework assignments.}
+
+% \textbf{`Math for the Information Age' TA at Cornell University \hfill{Spring 2016, '17}}
+% % \normalfont{Held weekly office hours and graded assignments.}
+
+% \textbf{`Functional Programming' TA at Cornell University \hfill{Spring, Fall 2015}}
+%\normalfont{Held weekly office hours, taught a weekly recitation section, and graded assignments. }
+
+\section{Fellowships}
+\textbf{CSEM Fellowship}, The University of Texas at Austin. \hfill{\textbf{Sep 2017 - Aug 2021}}
+
+\section{Preprints}
+\printbibliography[category=preprint, title={}, heading=none]
+
+\section{Publications}
+\printbibliography[category=published, title={}, heading=none]
+
+\section{Thesis}
+
+\printbibliography[category=thesis,title={},heading=none]
+
+\newpage
+
+\section{Invited Talks}
+  \condensed{Householder Symposium (plenary talk)}{\\
+  8-13 June 2025.}
+  \condensed{Babu\v{s}ka Forum at Oden Institute}{\\
+  ``Fast Randomized Solvers for Complex Physical Systems''.
+  18 April 2025.}
+  \condensed{SIAM Conference on Computational Science and Engineering}{\\
+  ``Advances in Domain Decomposition Methods and Fast Solvers'' (organizer).\\
+  3-7 March 2025.}
+  \condensed{Computational Tools for PDEs with Complicated Geometries and Interfaces at Flatiron Institute}{\\
+  ``An Introduction to the Hierarchical Poincare-Steklov Method''.\\
+  10-14 June 2024.}
+  \condensed{Copper Mountain Conference}{
+  %Fast Randomized Algorithms for Rank Structured Matrices.
+  14-19 April 2024.}
+  \condensed{International Congress on Industrial and Applied Mathematics}{\\
+  %Slab LU, a Sparse Direct Solver for Heterogeneous Architectures.\\
+  20-25 August 2023.}
+  \condensed{SIAM Annual Conference}{
+  %An Efficient Sparse Direct Solver via Domain Decomposition into Thin Slabs.\\
+  11-15 July 2022.}
+  \condensed{SIAM CSE Conference}{ %\\ 
+  %Sweeping Solvers for Multidomain Spectral Collocation Methods.\\
+  1-5 March 2021.}
+
+  \vspace{-2em}
+
+\iffalse
+\section{INDUSTRY}
+
+\textbf{Google Maps Software Engineering Intern \hfill{Jun - Aug 2015}\\}
+\normalfont{Designed and implemented a Java Map-Reduce pipeline, which evaluated trends to identify potential inaccuracy in maps data.}
+\fi
+
+
+\section{Workshops}
+\workshop{Rising Stars in Computational and Data Sciences}
+{Austin, Texas}{12-13 April 2023}
+\workshop{Challenges in Computational Methods for Integral Equations}{Oaxaca, Mexico}{22-27 May 2022}
+\workshop{Gene Golub SIAM Summer School in Data Science}
+{Aussois, France}{17-28 June 2019}
+\workshop{Oberwolfach Seminar in Numerical Homogenization} {Oberwolfach, Germany}{09-15 June 2019.}
+
+\vspace{-2em}
+
+\section{Involvement and Outreach}
+
+\textbf{Program Committee Member\hfill{Mar 2026}\\}
+Algorithms \& Performance area/track for ISC High Performance 2026.
+
+\textbf{Host of  Babu\v{s}ka Forum\hfill{March 2021 - June 2022}\\}
+{The Babu\v{s}ka Forum series was started by Professor Ivo Babu\v{s}ka several years ago to expose students to interesting and curious topics relevant to computational engineering and science with technical content at the graduate student level.}
+
+\textbf{Reviewer} $\cdot$ National Science Foundation $\cdot$ Journal of Computational Physics $\cdot$ SIAM Journal of Matrix Analysis and Applications $\cdot$ Communications on Pure and Applied Mathematics $\cdot$ Applied and Computational Harmonic Analysis $\cdot$ Computers and Mathematics with Applications $\cdot$ International Journal of High Performance Computing Applications 
+
+% \textbf{Student Representative of Oden Institute\hfill{Sep 2019 - Sep 2020}\\}
+% \normalfont{Represented the interests of the graduate students of the Oden Institute.}
+
+\section{Mentorship}
+
+\textbf{Research mentor}\hfill{\textbf{Jan 2024 - Current}\\}
+\normalfont{Joseph Kump in CSEM PhD program. Paper on arXiV (listed above).}
+
+\textbf{Directed Reading Program Mentor\hfill{Sep 2018 - May 2019}\\}
+\normalfont{Mentored undergraduate students in a computational research project.\\
+\phantom{x}\hspace{3ex} Multiplying Polynomials via the FFT - Elizabeth Taber\\
+\phantom{x}\hspace{3ex} Interpretable Matrix Decomposition - Emily Tallman}
+
+\pagebreak{}
+
+\section{Software}
+
+\printbibliography[category=software,title={},heading=none]
+
+\section{References}
+
+\textbf{Per-Gunnar Martinsson}\\
+W. A. ``Tex'' Moncrief, Jr. Endowment in Simulation-Based Engineering and Sciences\\
+Deputy Director, Oden Institute\\
+Professor of Mathematics\\
+University of Texas at Austin \\
+Email: pgm@oden.utexas.edu 
+
+\textbf{George Biros}\\
+W. A. ``Tex'' Moncrief, Jr. Endowment in Simulation-Based Engineering and Sciences\\
+Director, Parallel Algoritms for Data Analysis and Simulation Group\\
+Professor of Mechanical Engineering\\
+University of Texas at Austin\\
+Email: biros@oden.utexas.edu
+
+\textbf{Timo Betcke}\\
+Professor of Computational Mathematics\\
+University College London\\
+Email: t.betcke@ucl.ac.uk
+
+\textbf{Michael O'Neil}\\
+Professor of Mathematics\\
+Courant Institute of Mathematical Sciences\\
+New York University \\
+Email: oneil@cims.nyu.edu 
+
+\end{resume}
+
+\end{document}
