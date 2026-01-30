@@ -25,21 +25,18 @@ jobs:
         uses: xu-cheng/latex-action@v4
         with:
           root_file: CV_annayesy.tex
-          # If you use biblatex/biber, this helps ensure biber is run:
-          latexmk_use_xelatex: false
-          latexmk_use_lualatex: false
-          extra_system_packages: "biber"
+          latexmk_use_biber: true
 
       - name: Prepare site
         run: |
           mkdir -p site
-          cp resume.pdf site/resume.pdf
+          cp CV_annayesy.pdf site/CV_annayesy.pdf
           cat > site/index.html <<'EOF'
           <!doctype html>
           <meta charset="utf-8">
-          <meta http-equiv="refresh" content="0; url=resume.pdf">
+          <meta http-equiv="refresh" content="0; url=CV_annayesy.pdf">
           <title>Resume</title>
-          <p><a href="resume.pdf">Open resume.pdf</a></p>
+          <p><a href="CV_annayesy.pdf">Open CV_annayesy.pdf</a></p>
           EOF
 
       - name: Upload Pages artifact
