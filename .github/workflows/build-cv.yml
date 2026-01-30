@@ -19,7 +19,7 @@ jobs:
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v4
         with:
-          root_file: cv/CV_annayesy.tex
+          root_file: CV_annayesy.tex
           working_directory: cv
           latexmk_use_biber: true
 
