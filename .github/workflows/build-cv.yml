@@ -1,0 +1,37 @@
+name: Build CV and Publish PDF
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: cv/CV_annayesy.tex
+          working_directory: cv
+          latexmk_use_biber: true
+
+      - name: Prepare Pages content
+        run: |
+          mkdir -p pages/cv
+          cp cv/CV_annayesy.pdf pages/cv/CV_annayesy.pdf
+
+      - name: Publish to gh-pages (orphan branch)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: pages
+          force_orphan: true
