@@ -11,7 +11,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
@@ -21,12 +20,20 @@ jobs:
         with:
           root_file: CV_annayesy.tex
           working_directory: cv
-          latexmk_use_biber: true
 
       - name: Prepare Pages content
         run: |
+          rm -rf pages
           mkdir -p pages/cv
+
+          rsync -av \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude 'cv' \
+            ./ pages/
+
           cp cv/CV_annayesy.pdf pages/cv/CV_annayesy.pdf
+          touch pages/.nojekyll
 
       - name: Publish to gh-pages (orphan branch)
         uses: peaceiris/actions-gh-pages@v4
