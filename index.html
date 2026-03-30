@@ -146,36 +146,43 @@
       background: #ffffff;
       border: 1px solid rgba(11,102,195,0.18);
     }
+    .callout li{
+      color: var(--text);
+    }
 
-    /* Collapsible News */
-    details.news{
+    /* News */
+    .news-panel{
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background: #fff;
-      padding: 4px 12px;
+      padding: 12px 14px;
     }
-    details.news summary{
-      cursor: pointer;
-      font-weight: 600;
-      color: var(--accent);
-      padding: 10px 0;
-      list-style: none;
-    }
-    details.news summary::-webkit-details-marker{ display:none; }
-    details.news summary::after{
-      content:"▾";
-      float:right;
-      color: var(--accent);
-    }
-    details.news[open] summary::after{ content:"▴"; }
-
     .news-list{
-      margin: 0 0 10px;
+      margin: 0;
       padding-left: 18px;
     }
     .news-list li{
       margin: 8px 0;
       color: var(--text);
+    }
+    .news-list.is-collapsed li:nth-child(n+4){
+      display: none;
+    }
+    .news-toggle{
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+    .news-toggle:hover{
+      text-decoration: underline;
     }
     .news-date{
       color: var(--subtle);
@@ -217,8 +224,8 @@
         <div style="font-weight:650;">Anna Yesypenko</div>
         <nav class="nav">
           <a href="#research">Research</a>
-          <a href="#students">Students</a>
           <a href="#news">News</a>
+          <a href="#students">Students</a>
           <a href="#publications">Publications</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -281,38 +288,10 @@
       </div>
     </section>
 
-    <section id="students">
-      <h2>Prospective Students</h2>
-      <div class="panel callout">
-        <p>
-          I’m looking for PhD students (and strong MS/undergraduates) interested in scientific computing, numerical linear algebra, and high-performance computing.
-          If you’re interested, please email me with your CV and a short note about your background and what kinds of problems you’d like to work on.
-        </p>
-        <div class="grid-2" style="margin-top: 10px;">
-          <div class="panel" style="background:#fff;">
-            <strong>Good preparation</strong>
-            <ul>
-              <li>Linear algebra, numerical analysis, PDEs</li>
-              <li>Some programming experience (Python/C/C++)</li>
-              <li>Interest in computation and algorithms</li>
-            </ul>
-          </div>
-          <div class="panel" style="background:#fff;">
-            <strong>Getting started</strong>
-            <ul>
-              <li>Read one paper you’re excited about and tell me why</li>
-              <li>(Optional) share code, GitHub, or a writing sample</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
 <section id="news">
   <h2>News</h2>
-  <details class="news" open>
-    <summary>Recent updates</summary>
-    <ul class="news-list">
+  <div class="news-panel">
+    <ul class="news-list is-collapsed" id="news-list">
 
       <li>
         <span class="news-date">Mar 2026</span>
@@ -345,8 +324,25 @@
       </li>
 
     </ul>
-  </details>
+    <button class="news-toggle" id="news-toggle" type="button" aria-expanded="false" aria-controls="news-list">
+      More news
+    </button>
+  </div>
 </section>
+
+    <section id="students">
+      <h2>Prospective Students</h2>
+      <div class="panel callout">
+        <p>
+          I’m recruiting students at multiple levels.
+        </p>
+        <ul>
+          <li><strong>PhD and MS students:</strong> Please feel free to reach out if you are interested in working with me.</li>
+          <li><strong>Undergraduate students at OSU:</strong> Strong undergraduates interested in research in numerics are welcome to reach out. Helpful preparation includes coursework in linear algebra, real analysis, ODEs, and PDEs, along with some programming experience.</li>
+          <li><strong>Getting in touch:</strong> If you think our interests might align, please feel free to email me with your CV and a brief note about your background and research interests.</li>
+        </ul>
+      </div>
+    </section>
 
     <section id="publications">
       <h2>Selected Publications</h2>
@@ -388,5 +384,26 @@
       © 2026 Anna Yesypenko • Last updated: January 2026
     </div>
   </footer>
+  <script>
+    (function () {
+      var newsList = document.getElementById('news-list');
+      var newsToggle = document.getElementById('news-toggle');
+
+      if (!newsList || !newsToggle) return;
+
+      var newsItems = newsList.querySelectorAll('li');
+      if (newsItems.length <= 3) {
+        newsToggle.hidden = true;
+        newsList.classList.remove('is-collapsed');
+        return;
+      }
+
+      newsToggle.addEventListener('click', function () {
+        var isCollapsed = newsList.classList.toggle('is-collapsed');
+        newsToggle.textContent = isCollapsed ? 'More news' : 'Show fewer';
+        newsToggle.setAttribute('aria-expanded', String(!isCollapsed));
+      });
+    })();
+  </script>
 </body>
 </html>
