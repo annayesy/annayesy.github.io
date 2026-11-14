@@ -14,7 +14,7 @@
   }{\end{itemize}}
 
 \newcommand{\workshop}[3]{%
-  \textbf{#1}.\\%
+  \textbf{#1}.\space%
   #2. #3.\\[0.4em]%
 }
 
@@ -28,6 +28,9 @@
     sorting=none,
     maxnames=99
 ]{biblatex}
+\DeclareFieldFormat[online]{title}{\mkbibquote{#1}\isdot}
+\DeclareFieldFormat[article,inproceedings,software]{doi}{\href{https://doi.org/#1}{\texttt{DOI}}}
+\DeclareFieldFormat[software]{url}{\href{#1}{\texttt{GitHub}}}
 \addbibresource{references.bib}
 \nocite{*}
 
@@ -35,16 +38,16 @@
 % \addtocategory{inprep}{yesypenko2025multifrontal, yesypenko2025hmat, dirckx2025slablu}
 
 \DeclareBibliographyCategory{preprint}
-\addtocategory{preprint}{yesypenko2026quasioptimal, dirckx2025fast, kump2025gpu, pearce2025tagging}
+\addtocategory{preprint}{yesypenko2026quasioptimal, dirckx2025fast}
 
 \DeclareBibliographyCategory{published}
-\addtocategory{published}{yesypenko2026randomized,yesypenko2025fmm, yesypenko2024slablu, yesypenko2022gpu, revard2016grand}
+\addtocategory{published}{kump2025gpu,pearce2025tagging,yesypenko2026randomized,yesypenko2025fmm, yesypenko2024slablu, yesypenko2022gpu, revard2016grand}
 
 \DeclareBibliographyCategory{thesis}
 \addtocategory{thesis}{yesypenko2023thesis}
 
 \DeclareBibliographyCategory{software}
-\addtocategory{software}{python2025fmm,python2025simpletree,python2024slablu}
+\addtocategory{software}{python2025hpsmultidomain,python2025fmm,python2025simpletree,python2024slablu}
 
 % Default font is the helvetica postscript font
 \usepackage{helvet}
@@ -109,23 +112,10 @@ Major: Computer Science
 \end{format}
 %-------------------------------------------------------------------------------
 
-\section{Teaching}
-
-\textbf{Math 6601: Numerical Methods in Scientific Computing I \hfill{Fall 2026}}
-
-\textbf{Math 7611: Computational PDEs I \hfill{Fall 2025}}
-
-% \textbf{`Discrete Mathematics' TA at University of Pennsylvania \hfill{July 2017}}
-% % \normalfont{Delivered a short series of lectures on graph theory and developed a corresponding set of notes and homework assignments.}
-
-% \textbf{`Math for the Information Age' TA at Cornell University \hfill{Spring 2016, '17}}
-% % \normalfont{Held weekly office hours and graded assignments.}
-
-% \textbf{`Functional Programming' TA at Cornell University \hfill{Spring, Fall 2015}}
-%\normalfont{Held weekly office hours, taught a weekly recitation section, and graded assignments. }
-
 \section{Fellowships}
 \textbf{CSEM Fellowship}, The University of Texas at Austin. \hfill{\textbf{Sep 2017 - Aug 2021}}
+
+\vspace{-1em}
 
 \section{Preprints}
 \printbibliography[category=preprint, title={}, heading=none]
@@ -133,54 +123,68 @@ Major: Computer Science
 \section{Publications}
 \printbibliography[category=published, title={}, heading=none]
 
+\vspace{-1em}
+
 \section{Thesis}
 
 \printbibliography[category=thesis,title={},heading=none]
 
 \newpage
 
-\section{Invited Talks}
-  \condensed{CM+X Seminar at California Institute of Technology}{\\
+\section{Invited Seminars}
+  \condensed{Numerical Analysis Seminar at University of Maryland}{
+  ``Randomized Compression of Nonlocal Operators''.
+  College Park, Maryland. 10 November 2026.}
+  \condensed{CM+X Seminar at California Institute of Technology}{
   ``Fast Randomized Recovery and Solvers for Rank-Structured Matrices''.
-  9 June 2026.}
-  \condensed{Seminar at University of Auckland}{\\
+  Pasadena, California. 9 June 2026.}
+  \condensed{Seminar at University of Auckland}{
   ``Randomized Compression and Factorization of Rank-Structured Matrices''.
   Auckland, New Zealand. 20 May 2026.}
-  \condensed{Seminar at Queensland University of Technology}{\\
+  \condensed{Seminar at Queensland University of Technology}{
   ``Randomized Compression and Factorization of Rank-Structured Matrices''.
   Brisbane, Australia. 12 May 2026.}
-  \condensed{BIRS Women in Computational Methods for PDEs}{\\
+  \condensed{Invitations to Mathematics Seminar at The Ohio State University}{
+  ``Fast Randomized Solvers for Complex Physical Systems''.
+  Columbus, Ohio. 15 October 2025.}
+  \condensed{Babu\v{s}ka Forum at Oden Institute}{
+  ``Fast Randomized Solvers for Complex Physical Systems''.
+  Austin, Texas. 18 April 2025.}
+  \condensed{Seminar at The Ohio State University}{
+  ``Fast Randomized Solvers for Complex Physical Systems''.
+  Columbus, Ohio. 30 January 2025.}
+
+\vspace{-2em}
+
+\section{Conference Plenary Talk}
+  \condensed{Householder Symposium}{
+  ``Randomized Algorithms for the Simultaneous Compression and LU Factorization of Hierarchical Matrices''.
+  Ithaca, New York. 8-13 June 2025.}
+
+\vspace{-2em}
+
+\section{Conference and Workshop Presentations}
+  \condensed{SIAM Conference on Mathematics of Data Science}{
+  ``Quasi-Optimal randomized recovery of $\mathcal{H}^2$ matrices''.
+  Salt Lake City, Utah. 16-20 November 2026 (upcoming).}
+  \condensed{BIRS Women in Computational Methods for PDEs}{
   ``Randomized Simultaneous Compression and Factorization for Hierarchical Matrices''.
   Banff, Alberta, Canada. 1-6 March 2026.}
-  \condensed{Invitations to Mathematics Seminar at The Ohio State University}{\\
-  ``Fast Randomized Solvers for Complex Physical Systems''. 15 October 2025.}
-  \condensed{Householder Symposium (plenary talk)}{\\
-  ``Randomized Algorithms for the Simultaneous Compression and LU Factorization of Hierarchical Matrices''.\\
-  8-13 June 2025.}
-  \condensed{Babu\v{s}ka Forum at Oden Institute}{\\
-  ``Fast Randomized Solvers for Complex Physical Systems''.
-  18 April 2025.}
-  \condensed{SIAM Conference on Computational Science and Engineering}{\\
-  ``Advances in Domain Decomposition Methods and Fast Solvers'' (organizer).\\
-  3-7 March 2025.}
-  \condensed{Seminar at The Ohio State University}{\\
-  ``Fast Randomized Solvers for Complex Physical Systems''.
-  30 January 2025.}
-  \condensed{Computational Tools for PDEs with Complicated Geometries and Interfaces at Flatiron Institute}{\\
-  ``An Introduction to the Hierarchical Poincare-Steklov Method''.\\
-  10-14 June 2024.}
+  \condensed{Computational Tools for PDEs with Complicated Geometries and Interfaces at Flatiron Institute}{
+  ``An Introduction to the Hierarchical Poincare-Steklov Method''.
+  New York, New York. 10-14 June 2024.}
   \condensed{Copper Mountain Conference}{
-  %Fast Randomized Algorithms for Rank Structured Matrices.
-  14-19 April 2024.}
-  \condensed{International Congress on Industrial and Applied Mathematics}{\\
-  %Slab LU, a Sparse Direct Solver for Heterogeneous Architectures.\\
-  20-25 August 2023.}
+  ``Fast Randomized Algorithms for Rank Structured Matrices''.
+  Copper Mountain, Colorado. 14-19 April 2024.}
+  \condensed{International Congress on Industrial and Applied Mathematics}{
+  ``SlabLU, a Sparse Direct Solver for Heterogeneous Architectures''.
+  Tokyo, Japan. 20-25 August 2023.}
   \condensed{SIAM Annual Conference}{
-  %An Efficient Sparse Direct Solver via Domain Decomposition into Thin Slabs.\\
-  11-15 July 2022.}
-  \condensed{SIAM CSE Conference}{ %\\ 
-  %Sweeping Solvers for Multidomain Spectral Collocation Methods.\\
-  1-5 March 2021.}
+  ``An Efficient Sparse Direct Solver via Domain Decomposition into Thin Slabs''.
+  Pittsburgh, Pennsylvania. 11-15 July 2022.}
+  \condensed{SIAM CSE Conference}{
+  ``Sweeping Solvers for Multidomain Spectral Collocation Methods''.
+  Virtual. 1-5 March 2021.}
 
   \vspace{-2em}
 
@@ -208,10 +212,28 @@ Major: Computer Science
 
 \pagebreak{}
 
+\section{Teaching}
+
+\textbf{Math 6601: Numerical Methods in Scientific Computing I \hfill{Fall 2026}}
+
+\textbf{Math 7611: Computational PDEs I \hfill{Fall 2025}}
+
+% \textbf{`Discrete Mathematics' TA at University of Pennsylvania \hfill{July 2017}}
+% % \normalfont{Delivered a short series of lectures on graph theory and developed a corresponding set of notes and homework assignments.}
+
+% \textbf{`Math for the Information Age' TA at Cornell University \hfill{Spring 2016, '17}}
+% % \normalfont{Held weekly office hours and graded assignments.}
+
+% \textbf{`Functional Programming' TA at Cornell University \hfill{Spring, Fall 2015}}
+%\normalfont{Held weekly office hours, taught a weekly recitation section, and graded assignments. }
+
 \section{Service and Outreach}
 
 \textbf{Program Committee Member\hfill{Mar 2026}\\}
 Algorithms \& Performance area/track for ISC High Performance 2026.
+
+\textbf{Minisymposium Organizer\hfill{3-7 March 2025}\\}
+``Advances in Domain Decomposition Methods and Fast Solvers'', SIAM Conference on Computational Science and Engineering.
 
 \textbf{Host of Babu\v{s}ka Forum\hfill{March 2021 - June 2022}\\}
 {The Babu\v{s}ka Forum series was started by Professor Ivo Babu\v{s}ka several years ago to expose students to interesting and curious topics relevant to computational engineering and science with technical content at the graduate student level.}
@@ -224,17 +246,17 @@ Algorithms \& Performance area/track for ISC High Performance 2026.
 \section{Mentorship}
 
 \textbf{Undergraduate research mentor}\\
-\normalfont{\phantom{x}\hspace{3ex} Raiyan Islam (Denison University, Mathematics, graduating Spring 2027; Five Colleges of Ohio) --- \emph{Efficient Randomized Data Processing with Statistical Guarantees}.\\
-\phantom{x}\hspace{3ex} Chase Holm (The Ohio State University, Applied Mathematics, graduating Fall 2026) --- \emph{Fast Solvers for Elliptic PDEs and Boundary Integral Equations}.\\
-\phantom{x}\hspace{3ex} Yun Qiao (The Ohio State University, Honors Mathematics, graduating Spring 2027) --- \emph{Structured Solvers for PDE-Constrained Optimization}.}
+\normalfont{\emph{Raiyan Islam}. ``Efficient Randomized Data Processing with Statistical Guarantees''. Denison University, Mathematics, graduating Spring 2027; Five Colleges of Ohio.\\[0.4em]
+\emph{Chase Holm}. ``Fast Solvers for Elliptic PDEs and Boundary Integral Equations''. The Ohio State University, Applied Mathematics, graduating Fall 2026.\\[0.4em]
+\emph{Yun Qiao}. ``Structured Solvers for PDE-Constrained Optimization''. The Ohio State University, Honors Mathematics, graduating Spring 2027.}
 
 \textbf{Research mentor}\hfill{\textbf{Jan 2024 - Current}\\}
-\normalfont{Joseph Kump in CSEM PhD program. Paper in review (listed above).}
+\normalfont{\emph{Joseph Kump} in CSEM PhD program. Paper published (listed above).}
 
 \textbf{Directed Reading Program Mentor\hfill{Sep 2018 - May 2019}\\}
 \normalfont{Directed Reading Program mentor at the University of Texas at Austin. Mentored undergraduate students in a computational research project.\\
-\phantom{x}\hspace{3ex} Multiplying Polynomials via the FFT - Elizabeth Taber\\
-\phantom{x}\hspace{3ex} Interpretable Matrix Decomposition - Emily Tallman}
+\emph{Elizabeth Taber}. ``Multiplying Polynomials via the FFT''.\\[0.4em]
+\emph{Emily Tallman}. ``Interpretable Matrix Decomposition''.}
 
 \section{Software}
 
